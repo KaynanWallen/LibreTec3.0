@@ -1,5 +1,4 @@
 import api from "./api";
-import { useNavigate } from 'react-router-dom';
 
 export interface IBook {
     _id: {
@@ -48,9 +47,11 @@ export async function VerificarLogin(navigate: (to: string) => void) {
     username: Usuario.value,
     password: Senha.value
   }).then((response) => {
-    localStorage.setItem('auth', JSON.stringify({token: response.data.token}));
-    navigate('/');
+        console.log(response.data)
+        localStorage.setItem('auth', JSON.stringify({token: response.data}));
+        navigate('/');
   }).catch((err) => {
+    alert('Usuario ou Senha incorretos')
     console.log(err)
   })
 }
@@ -129,7 +130,7 @@ export async function DevolverBooks(books: IBook[]): Promise<void> {
                 }
               }
               
-              api.put(`/book`, book).then((response) => {alert('Livro Devolvido com sucesso!!');window.location.reload();}).catch((err) => {console.log(err)}); 
+              api.put(`/book`, book).then(() => {alert('Livro Devolvido com sucesso!!');window.location.reload();}).catch((err) => {console.log(err)}); 
 
             }
           }
@@ -177,8 +178,8 @@ export async function AtualizarBook(): Promise<void> {
       Arquivo: Arquivo.value,
       Cutter: Cutter.value,
       Palavra_Chave: Palavra_Chave.value,
-    }).then((response) => alert('Livro Atualizado')).catch((response) => alert('Ocorreu Algum erro, tente mais tarde'))
-  }).catch((err) => alert('Tombo de Livro não encontrado'))
+    }).then(() => alert('Livro Atualizado')).catch(() => alert('Ocorreu Algum erro, tente mais tarde'))
+  }).catch(() => alert('Tombo de Livro não encontrado'))
 }
 
 export async function SearchAtualizarBook(): Promise<IBook[]> {
@@ -268,7 +269,7 @@ export async function AdicionarBok(): Promise<void>{
     Cutter: Cutter.value,
     Palavra_Chave: Palavra_Chave.value,
   }).then((response) => {
-    alert('Deu cert')
+    alert('Livro Adicionado com sucesso')
     console.log(response)
   }).catch((err) => {
     console.log(err)
@@ -299,8 +300,8 @@ export async function EmprestarBook(): Promise<void> {
         Renovacoes: '',
         Periodo: Periodo.value,
         Entrega: Entrega.value,
-      }}).then((response) => {alert('Livro Emprestado com sucesso!!');window.location.reload();}).catch((err) => {console.log(err)})
-    ).catch((err) => alert('Tombo de livro não encontrado'));
+      }}).then(() => {alert('Livro Emprestado com sucesso!!');window.location.reload();}).catch((err) => {console.log(err)})
+    ).catch(() => alert('Tombo de livro não encontrado'));
 }
 
 
@@ -331,7 +332,7 @@ export async function RemoverBooks(books: IBook[]): Promise<void> {
           if(bookElement){
             if(bookElement.style.backgroundColor == 'rgb(0, 216, 232)') {
               console.log(book._id)
-              api.post(`/book/delete`, {id: book._id}).then((response) => {alert('Livro Removido com sucesso!!');window.location.reload();}).catch((err) => {console.log(err)}); 
+              api.post(`/book/delete`, {id: book._id}).then(() => {alert('Livro Removido com sucesso!!');window.location.reload();}).catch((err) => {console.log(err)}); 
             }
         }
       })

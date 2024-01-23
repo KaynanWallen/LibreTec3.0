@@ -10,7 +10,7 @@ function Login() {
                 <section className="w-[1280px] h-[700px] bg-[#005C6D] flex flex-row">
                     <div className="w-full flex flex-col justify-between">
                         <div className='p-5 flex flex-row items-center gap-5'>
-                            <img src={logo} className='w-[100px]'/>
+                            <img src={logo} className='w-[100px]' />
                             <h3 className='text-2xl text-white font-semibold'>Libre-Tec</h3>
                         </div>
 
@@ -27,12 +27,12 @@ function Login() {
                     <div className="w-full bg-[#D9D9D9] flex flex-col items-center">
                         <div className='w-full flex flex-row justify-between items-end p-5'>
                             <h1 className='text-[40px] text-[#005c6d] font-bold'>Entrar</h1>
-                            <img src={locked} className='w-[100px]'/>
+                            <img src={locked} className='w-[100px]' />
                         </div>
 
-                        <div  className='w-[500px] h-auto  mt-10 flex flex-col items-center gap-5'>
-                            <input className='w-[450px] h-[60px] shadow-border-shadow rounded-xl p-3 text-4xl' type='text' placeholder='Usuario' id='Usuario'/>
-                            <input className='w-[450px] h-[60px] shadow-border-shadow rounded-xl p-3 text-4xl' type='text' placeholder='Senha' id='Senha'/>
+                        <div className='w-[500px] h-auto  mt-10 flex flex-col items-center gap-5'>
+                            <input className='w-[450px] h-[60px] shadow-border-shadow rounded-xl p-3 text-4xl' type='text' placeholder='Usuario' id='Usuario' />
+                            <input className='w-[450px] h-[60px] shadow-border-shadow rounded-xl p-3 text-4xl' type='password' placeholder='Senha' id='Senha' />
                             <p className='text-[#005c6d] text-[20px]'>Esqueceu sua senha?</p>
                             <section className='w-full flex justify-start items-start'>
                                 <button className='w-[200px] h-[60px] bg-[#005c6d] rounded-xl text-white font-bold text-[24px]' onClick={() => {

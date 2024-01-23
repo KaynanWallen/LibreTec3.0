@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import iconemprestar from '/img/iconemprestar.png';
-import { DevolverBooks, GetBooks, IBook, ProcurarBook } from "../services/routes.js";
+import { DevolverBooks, IBook, ProcurarBook } from "../services/routes.js";
 
 import atualizar from '/img/botaoatualizar.png';
 import adicionar from '/img/botaoadicionar.png';
@@ -54,8 +54,6 @@ function PageDevolver() {
 
     const [Books, setBooks] = useState<IBook[]>([]);
 
-    const searchInput = document.getElementById('search') as HTMLInputElement;
-
     const handleKeyDown = async (event: React.KeyboardEvent<HTMLInputElement>) => {
         if (event.key === 'Enter') {
             ProcurarBook().then((data) => {
@@ -64,7 +62,7 @@ function PageDevolver() {
                 console.error('API error:', err);
             })
         }
-      };
+    };
 
     return (
         <>
@@ -74,15 +72,15 @@ function PageDevolver() {
                     <div className='flex flex-row justify-between'>
                         <div className='w-[200px] h-[80px] rounded-xl bg-white'>
                             <select data-te-select-init className='w-full h-full cursor-pointer text-2xl text-center text-azul-claro font-bold' id='campo'>
-                                <option value="Titulo" className=' font-semibold'>Título</option> 
-                                <option value="Nome" className='font-semibold'>Nome</option>
+                                <option value="Titulo" className=' font-semibold'>Título</option>
+                                <option value="Emprestimo.Nome" className='font-semibold'>Nome</option>
                                 <option value="Tombo_Atual" className='font-semibold'>Tombo Atual</option>
                                 <option value="Tombo_Antigo" className='font-semibold'>Tombo Antigo</option>
                             </select>
                         </div>
 
                         <div className='w-[550px] h-[80px] rounded-xl bg-white flex flex-row justify-center items-center'>
-                            <input className='w-[500px] h-[70px] rounded-xl p-3 text-4xl' type='text' id='search' onKeyDown={handleKeyDown}/>
+                            <input className='w-[500px] h-[70px] rounded-xl p-3 text-4xl' type='text' id='search' onKeyDown={handleKeyDown} />
                             <div className='w-[80px] h-[80px] bg-azul-claro rounded-xl cursor-pointer p-2' onClick={() => {
                                 ProcurarBook().then((data) => {
                                     setBooks(data)
@@ -90,7 +88,7 @@ function PageDevolver() {
                                     console.error('API error:', err);
                                 })
                             }}>
-                                <img src={search} alt='icons pesquisar'/>
+                                <img src={search} alt='icons pesquisar' />
                             </div>
                         </div>
                     </div>

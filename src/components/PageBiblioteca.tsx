@@ -2,21 +2,16 @@ import $ from 'jquery';
 import 'datatables.net';
 import 'datatables.net-dt/css/jquery.dataTables.css';
 import { useEffect, useState } from 'react';
-import { GetAllBooks, GetBooks, IBook } from '../services/routes';
+import { GetAllBooks, IBook } from '../services/routes';
 
-
-interface CardProps {
-    book: IBook;
-}
 
 function PageBiblioteca() {
     const [Books, setBooks] = useState<IBook[]>([]);
     useEffect(() => {
-        // Inicialize a tabela DataTables aqui
         GetAllBooks().then((response) => {
             console.log(response)
             setBooks(response)
-            const dataTable = $('#example').DataTable();
+            $('#example').DataTable();
         }).catch((err) => {
             console.log("API Erro: " + err)
         })
@@ -55,7 +50,7 @@ function PageBiblioteca() {
                         </table>
                     </>
                 ) : (
-                    <p>Carregando</p>
+                    <p>Carregando...</p>
                 )}
 
             </main>

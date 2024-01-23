@@ -3,9 +3,6 @@ import { useNavigate  } from 'react-router-dom';
 import iconUserBook from '/img/userbook.png';
 import iconUserPratileiras from '/img/iconscollumn.png';
 import iconBook from '/img/iconsbook.png';
-import { Route, Navigate, Outlet } from 'react-router-dom';
-import { VerificarLogin } from '../services/routes';
-import { useEffect } from 'react';
 
 
 function Home() {

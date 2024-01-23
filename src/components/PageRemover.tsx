@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import iconemprestar from '/img/iconemprestar.png';
-import {IBook, ProcurarBook, RemoverBooks } from "../services/routes.js";
+import { IBook, ProcurarBook, RemoverBooks } from "../services/routes.js";
 import botaotrash from '/img/botaotrash.png';
 import search from '/img/search.png';
 
@@ -29,7 +29,7 @@ const Card: React.FC<CardProps> = ({ book }) => {
                     <p className='max-w-[400px] font-bold'>Tombo Atual : <span className="font-semibold">{book.Tombo_Atual}</span></p>
                     <p className='max-w-[400px] font-bold'>Genero : <span className="font-semibold">{book.Genero}</span></p>
                     <p className='max-w-[400px] font-bold'>Cutter : <span className="font-semibold">{book.Cutter}</span></p>
-                    
+
                 </div>
             </div>
         </>
@@ -52,7 +52,7 @@ function PageRemover() {
                 console.error('API error:', err);
             })
         }
-      };
+    };
 
     return (
         <>
@@ -62,15 +62,15 @@ function PageRemover() {
                     <div className='flex flex-row justify-between'>
                         <div className='w-[200px] h-[80px] rounded-xl bg-white'>
                             <select data-te-select-init className='w-full h-full cursor-pointer text-2xl text-center text-azul-claro font-bold' id='campo'>
-                                <option value="Titulo" className=' font-semibold'>Título</option> 
-                                <option value="Nome" className='font-semibold'>Nome</option>
+                                <option value="Titulo" className=' font-semibold'>Título</option>
+                                <option value="Emprestimo.Nome" className='font-semibold'>Nome</option>
                                 <option value="Tombo_Atual" className='font-semibold'>Tombo Atual</option>
                                 <option value="Tombo_Antigo" className='font-semibold'>Tombo Antigo</option>
                             </select>
                         </div>
 
                         <div className='w-[550px] h-[80px] rounded-xl bg-white flex flex-row justify-center items-center'>
-                            <input className='w-[500px] h-[70px] rounded-xl p-3 text-4xl' type='text' id='search' onKeyDown={handleKeyDown}/>
+                            <input className='w-[500px] h-[70px] rounded-xl p-3 text-4xl' type='text' id='search' onKeyDown={handleKeyDown} />
                             <div className='w-[80px] h-[80px] bg-azul-claro rounded-xl cursor-pointer p-2' onClick={() => {
                                 ProcurarBook().then((data) => {
                                     setBooks(data)
@@ -78,7 +78,7 @@ function PageRemover() {
                                     console.error('API error:', err);
                                 })
                             }}>
-                                <img src={search} alt='icons pesquisar'/>
+                                <img src={search} alt='icons pesquisar' />
                             </div>
                         </div>
                     </div>
@@ -87,7 +87,7 @@ function PageRemover() {
                         {Books.length > 0 ? (
                             <>
                                 {Books.map((book) => (
-                                   <Card book={book} />
+                                    <Card book={book} />
                                 ))}
                             </>
                         ) : (
