@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import iconemprestar from '/img/iconemprestar.png';
-import { DevolverBooks, GetBooks, IBook, ProcurarBook, RemoverBooks } from "../services/routes.js";
-
-import atualizar from '/img/botaoatualizar.png';
-import adicionar from '/img/botaoadicionar.png';
+import {IBook, ProcurarBook, RemoverBooks } from "../services/routes.js";
+import botaotrash from '/img/botaotrash.png';
 import search from '/img/search.png';
 
 import { Select, initTE } from "tw-elements";
@@ -45,8 +43,6 @@ const Card: React.FC<CardProps> = ({ book }) => {
 function PageRemover() {
 
     const [Books, setBooks] = useState<IBook[]>([]);
-
-    const searchInput = document.getElementById('search') as HTMLInputElement;
 
     const handleKeyDown = async (event: React.KeyboardEvent<HTMLInputElement>) => {
         if (event.key === 'Enter') {
@@ -95,20 +91,16 @@ function PageRemover() {
                                 ))}
                             </>
                         ) : (
-                            <p>Não há livros para devolver.</p>
+                            <p>Não há livros para Remover</p>
                         )}
 
                     </div>
                 </section>
             </main>
 
-            <section className='w-[225px] h-[100px] bg-cinzento absolute end-[40px] bottom-24 shadow-border-shadow rounded-xl grid grid-cols-2 items-center justify-items-center'>
+            <section className='w-[100px] h-[100px] bg-cinzento absolute end-[40px] bottom-24 shadow-border-shadow rounded-xl flex justify-center items-center'>
                 <div className='w-[75px] h-[75px] bg-white rounded-xl shadow-border-shadow2 flex justify-center items-center'>
-                    <img className='w-9/12' src={atualizar} alt='logo da loja' onClick={() => RemoverBooks(Books)} />
-                </div>
-
-                <div className='w-[75px] h-[75px] bg-white rounded-xl shadow-border-shadow2 flex justify-center items-center'>
-                    <img className='w-9/12' src={adicionar} alt='logo da loja' />
+                    <img className='w-9/12' src={botaotrash} alt='logo da loja' onClick={() => RemoverBooks(Books)} />
                 </div>
             </section>
         </>

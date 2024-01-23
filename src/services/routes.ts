@@ -1,4 +1,5 @@
 import api from "./api";
+import { useNavigate } from 'react-router-dom';
 
 export interface IBook {
     _id: {
@@ -38,6 +39,48 @@ export interface IBook {
     }
 }
 
+
+export async function VerificarLogin(navigate: (to: string) => void) {
+  let Usuario = document.getElementById('Usuario') as HTMLInputElement;
+  let Senha = document.getElementById('Senha') as HTMLInputElement;
+
+  api.post('/login', {
+    username: Usuario.value,
+    password: Senha.value
+  }).then((response) => {
+    localStorage.setItem('auth', JSON.stringify({token: response.data.token}));
+    navigate('/');
+  }).catch((err) => {
+    console.log(err)
+  })
+}
+
+export async function Deslogar(navigate: (to: string) => void) {
+  localStorage.setItem('auth', JSON.stringify(''));
+  navigate('/login');
+}
+
+export async function VerificarToken(): Promise<boolean>{
+  const storedAuth = localStorage.getItem('auth');
+  if(storedAuth){
+    const token = JSON.parse(storedAuth).token;
+    try {
+      const response = await api.get('/login/verification', {
+        headers: { Authorization: `${token}` }
+      });
+
+      if(response.data.message == "Sucess") {
+        return true
+      }
+      return false
+    } catch (error) {
+      console.log(error)
+      return false
+    }
+  }
+  return false
+}
+
 export async function GetBooks(): Promise<IBook[]> {
     try {
         const response = await api.get(`/book`);
@@ -60,6 +103,7 @@ export async function GetAllBooks(): Promise<IBook[]> {
 
 
 export async function DevolverBooks(books: IBook[]): Promise<void> {
+  
   try {
       //console.log(books)
       books.forEach(book => {

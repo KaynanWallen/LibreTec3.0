@@ -55,7 +55,7 @@ function PageBiblioteca() {
                         </table>
                     </>
                 ) : (
-                    <p>Não há livros para devolver.</p>
+                    <p>Carregando</p>
                 )}
 
             </main>

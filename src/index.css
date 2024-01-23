@@ -6,6 +6,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
 }
 
 html,body {
@@ -20,6 +21,10 @@ html,body {
     flex-direction: column;
     justify-content: space-between;
 }
+
+.login-page {
+    background-image: url('../public//img/background.jpg');
+} 
 
 input:focus, select:focus {
     border: 0 none;

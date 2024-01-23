@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: "https://api-libretec.vercel.app",
+    baseURL: "http://localhost:1234",
 })
 
 export default api;
